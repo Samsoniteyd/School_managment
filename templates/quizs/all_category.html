@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% load humanize %}
+{% block title %}
+  quiz
+{% endblock title %}
+
+{% block content %}
+  
+
+<!-- quizz categories  -->
+<!-- quizz categories  -->
+
+<div class="container-fluid ">
+  <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">All Categories</span></h2>
+  <div class="row px-xl-5 pb-3">
+      {% if brin %}
+        {% for cat in brin  %}
+          
+      <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
+          <a class="text-decoration-none" href="{% url 'category_question' cat.id %}">
+              <div class="card cat-item ">
+                  <div class="card-header" >
+                      <img class="img-fluid" src=" {{cat.image.url}} " alt="{{cat.title}}">
+                  </div>
+                  <div class=" card-body flex-fill pl-3">
+                      <h6>{{cat.title |title}}</h6>
+                      <h6>{{cat.detail}}</h6>
+                      <small class="text-body"></small>
+                  </div>
+              </div>
+          </a>
+      </div>
+        {% endfor %}
+      {% else %}
+      <p class="lead p-3 bg-danger text-white">no category</p>
+      {% endif %}
+      
+  </div>
+</div>
+
+
+
+
+
+
+{% endblock content %}

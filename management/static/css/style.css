@@ -1,0 +1,55 @@
+
+
+.topbar {
+    background-color: #000;
+    margin-bottom: 30px;
+    padding: 12px 0 14px;
+}
+
+.topbar a,
+.topbar p {
+    color: #fff;
+    font-size: 14px;
+    margin: 0;
+}
+
+.topbar .text-left p {
+    margin-top: 3px;
+}
+
+.topbar .text-left i {
+    padding-right: 3px;
+}
+
+/* .header {
+    position: absolute;
+    z-index: 3000;
+    left: 0;
+    top: 0;
+    right: 0;
+    padding: 0;
+    background-color: transparent;
+    text-decoration: none !important;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -ms-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+}  */
+
+section .jlo{
+    /* background: url('static/img/Los-Amigos-High-School.jpg');   */
+    background-image: url(/management/static/img/Los-Amigos-High-School.jpg);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    text-align: center;
+    font-size: 30px;
+    height: 100vh;
+    
+    /* background-color: transparent; */
+}
+section .jlo img{
+    height: 100vh;
+    width: 100vb;
+}

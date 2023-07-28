@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% load humanize %}
+{% block title %}
+  {{category.title}} question
+{% endblock title %}
+
+{% block content %}
+  <h2 class="my-4">Attempted Question</h2>
+  <table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>question</th>
+            <th>Right Answer</th>
+            <th>submitted Answer</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in result  %}
+        <tr>
+            <td>{{row.id}}</td>
+            <td>{{row.question}}</td>
+            <td>{{row.question.right_opt}}</td>
+            {% if row.question.right_opt == row.right_answer %}          
+            <td class="bg-success text-white">{{row.right_answer}}</td>
+            {% else %}
+            <td class="bg-danger text-white">{{row.right_answer}}</td>
+            {% endif %}
+        </tr>
+          
+        {% endfor %}
+    </tbody>
+
+  </table>
+
+
+  <h2 class="my-4">Result Details</h2>
+  <table class="table table-bordered">
+    
+        <tr>
+            <th>total qestions</th>
+            <td> {{result.count}} </td>
+           
+        </tr>
+        <tr>
+            <th>total skipped qestions</th>
+            <td> {{total_skipped}} </td>
+           
+        </tr>
+        <tr>
+            <th>total attempted qestions</th>
+            <td> {{attempted}} </td>
+        </tr>
+        <tr>
+            <th>Right Answers</th>
+            <td> {{rightAns}} </td>
+        </tr>
+        <tr>
+            <th>percentage</th>
+            <td> {{percentage}}%</td>
+        </tr>
+    
+    
+    </tbody>
+
+  </table>
+{% endblock content %}

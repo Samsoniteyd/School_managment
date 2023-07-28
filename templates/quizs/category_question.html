@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% load humanize %}
+{% block title %}
+  question
+{% endblock title %}
+
+{% block content %}
+  
+<div class="question">
+
+<div class="container">
+<h2 class="my-4">category: <span>{{category.title}} </span> </h2>
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6">
+            {% if question %}
+            <form action=" {% url 'submit_answer' category.id question.id %} " method="post">
+                {% csrf_token %}
+                <div class="card my-4 border-dark shadow">
+                    <div class="card-header border-dark">
+                        <div><h4> {{question.question}}  <span class="timer float-end"></span> </h4></div>
+                        <div class="card-body">
+                            <table class="table table-bordered">
+                                <tr>
+                                    <td> <input   value="{{question.opt_1}}" id="option_1" name="answer" type="radio"> </td>
+                                    <th><label for="option_1"> {{question.opt_1}} </label></th>
+                                </tr>
+                                <tr>
+                                    <td> <input   value="{{question.opt_2}}" id="option_2" name="answer" type="radio"> </td>
+                                    <th><label for="option_2">{{question.opt_2}}</label></th>
+                                </tr>
+                                <tr>
+                                    <td> <input   value="{{question.opt_3}}" id="option_3" name="answer" type="radio"> </td>
+                                    <th><label for="option_3">{{question.opt_3}}</label></th>
+                                </tr>
+                                <tr>
+                                    <td> <input  value="{{question.opt_4}}" id="option_4" name="answer" type="radio"> </td>
+                                    <th><label for="option_4">{{question.opt_4}}</label></th>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <input type="submit"  name= "skip" value="skip" class="btn btn-warning skipBtn">
+                    <input type="submit" name="submit"  value="submit" class="btn btn-primary submitBtn">
+                </div>
+            </form>
+         
+              
+            {% endif %}
+            
+
+        </div>
+    </div>
+</div>
+
+
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        // $(".submitBtn").on('click', function(){
+        //    var _checkedAns= $("input[name='answer']:checked").val();
+        //    if(_checkedAns==undefined){
+        //        alert('please select option!!');
+        //        return false;
+        //    }
+
+        // });
+
+// // timer 
+	$(".timer").countdowntimer({
+		seconds : " 10 ",
+        size : "sm",
+        timeUp:function(){
+            location.reload();
+
+
+        }
+	});
+    });
+
+</script>
+
+
+{% endblock content %}
+
+
+
+
+
+
