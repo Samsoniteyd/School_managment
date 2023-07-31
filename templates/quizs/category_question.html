@@ -73,10 +73,10 @@
 
 // // timer 
 	$(".timer").countdowntimer({
-		seconds : " 10 ",
+		seconds : " {{question.time_limit}}",
         size : "sm",
         timeUp:function(){
-            location.reload();
+            $(".skipBtn").trigger('click'); 
 
 
         }

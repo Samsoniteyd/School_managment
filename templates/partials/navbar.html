@@ -45,6 +45,7 @@
                       {% if request.user.is_authenticated %}
                       <li><a class="dropdown-item" href=" {% url 'logout' %} ">Logout</a></li>
                       <li><a class="dropdown-item" href=" {% url 'dashboard' %} ">Dashboard</a></li>
+                      <li><a class="dropdown-item" href=" {% url 'result' %} ">Result</a></li>
                         
                       {% else %}
                       <li><a class="dropdown-item" href=" {% url 'login' %} ">Login</a></li>
