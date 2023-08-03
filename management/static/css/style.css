@@ -19,7 +19,7 @@
 
 .topbar .text-left i {
     padding-right: 3px;
-}
+} 
 
 /* .header {
     position: absolute;
@@ -39,7 +39,7 @@
 
 section .jlo{
     /* background: url('static/img/Los-Amigos-High-School.jpg');   */
-    background-image: url(/management/static/img/Los-Amigos-High-School.jpg);
+    /* background-image: url(/management/static/img/Los-Amigos-High-School.jpg); */
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -47,9 +47,89 @@ section .jlo{
     font-size: 30px;
     height: 100vh;
     
-    /* background-color: transparent; */
+    background-color: red;
 }
-section .jlo img{
+/* section .jlo img{
     height: 100vh;
     width: 100vb;
+} */
+
+.dropdown:hover .dropdown-menu{
+    display: block;
+}
+
+.dropdown:hover{
+    background-color: red;
+}
+
+.navbar{
+    padding-top: 0rem;
+    
+}
+
+.navbar li{
+    font-weight: bold;
+} 
+ .navbar li:hover {
+    border-bottom: solid red 2px;
+}
+
+.sectry .col-md-4 .custom img{
+    height: 70vh;
+    width: 25vw;
+   /* margin-right: 9rem; */
+}
+/* .sectry .col-md-4 .custom {
+    border: 2px solid blue ;
+    height: 70vh;
+
+} */
+.db{
+    background-color: #000;
+    color: #fff;
+    height: 30vh;
+    position: absolute;
+    width: 100%;
+}
+.tagline-message{
+    width: 40rem;
+   margin-left: 15rem;
+    
+}
+.section .col-md-6 .boxx{
+    /* border: 2px solid red; */
+    position: relative;
+    margin-top: 8rem;
+    background-color: #fff;
+    text-align: center;
+    border-radius: 0rem;
+    height: 40vh;
+  
+}
+.section .col-md-3 .boxx{
+   
+    /* border: 2px solid red; */
+    position: relative;
+    margin-top: 8rem;
+    background-color: #fff;
+    /* margin-left: 2rem; */
+    text-align: center;
+    border-radius: 0rem;
+    height: 40vh;
+    
+    
+}
+.gb{
+    background-color: rgb(221, 221, 221);
+}
+
+.section .col-md-6 .box{
+    /* border: 2px solid red; */
+    /* position: relative; */
+    margin-top: 4rem;
+    background-color: #fff;
+    text-align: center;
+    border-radius: 0rem;
+    height: 30vh;
+  
 }

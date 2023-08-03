@@ -5,3 +5,7 @@ from django.contrib import admin
 from . models import *
 
 admin.site.register(Registration)
+
+class courseAdmin(admin.ModelAdmin):
+    list_display= ['title', 'name']
+admin.site.register(course, courseAdmin)  

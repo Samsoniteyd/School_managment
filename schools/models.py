@@ -17,7 +17,21 @@ class Registration(models.Model):
 
 
     def __str__(self):
-        pass
+        return self.middlename
 
     
+class course(models.Model):
+     img  = models.ImageField(upload_to='course', null=True)
+     title = models.CharField(max_length=225)
+     name = models.CharField(max_length=225, blank=False, null=True)
+     details = models.CharField(max_length=255, null=True)
+
+     class Meta:
+         verbose_name_plural= 'courses'
+
+
+     def __str__(self):
+        return self.title
+
     
+   
