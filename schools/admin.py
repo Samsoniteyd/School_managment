@@ -8,4 +8,8 @@ admin.site.register(Registration)
 
 class courseAdmin(admin.ModelAdmin):
     list_display= ['title', 'name']
-admin.site.register(course, courseAdmin)  
+admin.site.register(course, courseAdmin)
+
+class sliderAdmin(admin.ModelAdmin):
+    list_display= ['image', 'title']
+admin.site.register(slider, sliderAdmin)    

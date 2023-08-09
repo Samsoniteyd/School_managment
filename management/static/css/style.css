@@ -124,7 +124,7 @@ section .jlo{
 }
 
 .section .col-md-6 .box{
-    /* border: 2px solid red; */
+    border: 2px solid rgb(248, 247, 247);
     /* position: relative; */
     margin-top: 4rem;
     background-color: #fff;
@@ -133,3 +133,31 @@ section .jlo{
     height: 30vh;
   
 }
+
+.hj{
+    background-color: #000;
+    margin-top: 2rem;
+    color: white;
+}
+
+
+.swiper {
+    width: 100%;
+    height: 100%;
+  }
+
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }

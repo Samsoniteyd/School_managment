@@ -33,5 +33,16 @@ class course(models.Model):
      def __str__(self):
         return self.title
 
-    
+
+
+
+class slider(models.Model):
+    image = models.ImageField( upload_to='slider')
+    title = models.CharField(max_length=225, blank=True)
+
+    class Meta:
+         verbose_name_plural= 'sliders'
+
+    def __str__(self):
+        return self.title
    
