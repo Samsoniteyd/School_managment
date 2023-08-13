@@ -45,4 +45,13 @@ class slider(models.Model):
 
     def __str__(self):
         return self.title
-   
+
+class testmonial(models.Model):
+    image = models.ImageField( upload_to='testmonial')
+    name = models.CharField(max_length=225, blank=True)
+
+    class Meta:
+         verbose_name_plural= 'testmonials'
+
+    def __str__(self):
+        return self.name

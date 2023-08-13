@@ -10,26 +10,37 @@
 {% block content %}
 
 <section class="jlo">
-    <div class="container">
+    <!-- <div class="container-fluid"> -->
          <!-- Swiper -->
-  <div class="swiper mySwiper">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide">Slide 1</div>
-      <div class="swiper-slide">Slide 2</div>
-      <div class="swiper-slide">Slide 3</div>
-      <div class="swiper-slide">Slide 4</div>
-      <div class="swiper-slide">Slide 5</div>
-      <div class="swiper-slide">Slide 6</div>
-      <div class="swiper-slide">Slide 7</div>
-      <div class="swiper-slide">Slide 8</div>
-      <div class="swiper-slide">Slide 9</div>
-    </div>
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-  </div>
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+            {% if slid %}
+            {% for tul in slid  %}
 
-        <p class="lead">  </p>
-    </div>
+                <div class="swiper-slide d-none d-md-block align-items-center justify-content-center">
+                    <div class="img">
+
+                        <img src=" {{tul.image.url}} " alt="" class="" >
+                    </div>
+
+                    <div class="content">
+                       <h3 class="pluk">  {{tul.title}} </h3>
+                    </div>
+                </div>           
+                
+                {% endfor %}
+                
+                {% else %}
+                
+                <p class="lead"> no more slide </p>
+                {% endif %}
+            </div>
+                
+           <div class="swiper-button-next"></div>
+           <div class="swiper-button-prev"></div>
+        </div>
+
+    <!-- </div> -->
   <!-- <img src="static/img/Los-Amigos-High-School.jpg" alt=""> -->
 
 </section>
@@ -154,7 +165,7 @@
                    
                     {% for item in paginator.paginator.page_range %}
                     {% if item == paginator.number %}
-                    <li class="page-item active"><a class="page-link" href=""> {{item}} </a></li>
+                    <li class="page-item active"><a class="page-link" href="#"> {{item}} </a></li>
                       
                     {% else %}
                     <li class="page-item"><a class="page-link" href="?page={{item}} "> {{item}} </a></li>
@@ -196,7 +207,7 @@
         <hr class="invis">
 
         <div class="section-button text-center">
-            <a href="#" class="btn btn-primary">View All Courses</a>
+            <a href="#" class="btn btn-primary mb-4">View All Courses</a>
         </div>
     </div><!-- end container -->
 </section>
@@ -307,9 +318,12 @@
         </div><!-- end title -->
 
         <div class="row">
+            {% if testmo %}
+            
+            {% for test in testmo  %}
             <div class="col-md-4">
                 <div class="box testimonial">
-                    <p class="testiname"><strong><img src="upload/testimonial_01.png" alt="" class="img-circle"> Jenny LUXURY</strong></p>
+                    <p class="testiname"><strong><img src=" {{test.image.url}}" alt="" class="img-circle"> {{test.name}} </strong></p>
                     <p>Quisque porttitor eros quis leo pulvinar, at hendrerit sapien iaculis. Donec consectetur accumsan arcu, sit amet fringilla ex ultricies.</p>
                     <div class="rating">
                         <i class="fa fa-star"></i>
@@ -320,34 +334,17 @@
                     </div>
                 </div><!-- end testimonial -->
             </div><!-- end col -->
+                {% endfor %}
+               
+                {% else %}
+                  <div class="lead">no testmonial for this project</div>
+                {% endif %}
+                
+                
 
-            <div class="col-md-4">
-                <div class="box testimonial">
-                    <p class="testiname"><strong><img src="upload/testimonial_02.png" alt="" class="img-circle"> Martin LEO</strong></p>
-                    <p>Quisque porttitor eros quis leo pulvinar, at hendrerit sapien iaculis. Donec consectetur accumsan arcu, sit amet fringilla ex ultricies.</p>
-                    <div class="rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-o"></i>
-                    </div>
-                </div><!-- end testimonial -->
-            </div><!-- end col -->
+           
 
-            <div class="col-md-4">
-                <div class="box testimonial">
-                    <p class="testiname"><strong><img src="upload/testimonial_03.png" alt="" class="img-circle"> John DOE</strong></p>
-                    <p>Quisque porttitor eros quis leo pulvinar, at hendrerit sapien iaculis. Donec consectetur accumsan arcu, sit amet fringilla ex ultricies.</p>
-                    <div class="rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                    </div>
-                </div><!-- end testimonial -->
-            </div><!-- end col -->
+            
         </div><!-- end row -->
     </div><!-- end container -->
 </section>

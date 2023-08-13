@@ -29,10 +29,15 @@ def category_question(request, cat_id):
     if countAttempt == 0:
          models.UserCategoryAttempts.objects.create(user=request.user, category=category)
         #  else check last attempt time 
-    else:
+    else: 
         lastAttempt=models.UserCategoryAttempts.objects.filter(user=request.user, category=category).order_by('id').first()
         futureTime = lastAttempt.attempt_time + timedelta(hours=hoursLimit) 
-        # if last future < lastAttempt, show warnning message 
+        # if last future < lastAttempt, show warnning message
+     
+
+    #   models.UserCategoryAttempts.objects.create(user=request.user, category=category)
+
+      
 
         if lastAttempt and lastAttempt.attempt_time < futureTime:
             return redirect('attempt-limit')
@@ -41,6 +46,7 @@ def category_question(request, cat_id):
         else:
             #  insert another attempt 
             models.UserCategoryAttempts.objects.create(user=request.user, category=category)
+
 
             
         
@@ -69,10 +75,10 @@ def submit_answer(request, cat_id, quest_id):
                 }
                 return render(request, 'quizs/category_question.html', context ) 
         else:
-                quest=models.QuizQuestion.objects.get(id=quest_id)
-                user=request.user
-                answer=request.POST['answer'] 
-                models.UserSubmittedAnswer.objects.create(user=user, question=quest, right_answer=answer)
+            quest=models.QuizQuestion.objects.get(id=quest_id)
+            user=request.user
+            answer=request.POST['answer'] 
+            models.UserSubmittedAnswer.objects.create(user=user, question=quest, right_answer=answer)
 
             # return HttpResponse('skip is clicked!!')
              
@@ -88,7 +94,7 @@ def submit_answer(request, cat_id, quest_id):
             return render(request, 'quizs/category_question.html', context)
         else:
             result = models.UserSubmittedAnswer.objects.filter(user=request.user)
-            skipped = models.UserSubmittedAnswer.objects.filter(user=request.user,  right_answer= "not submitted" ).count()
+            skipped = models.UserSubmittedAnswer.objects.filter(user=request.user, right_answer= "not submitted").count()
             attempted  = models.UserSubmittedAnswer.objects.filter(user=request.user).exclude(right_answer= "not submitted").count()
             rightAns=0
             percentage= 0
@@ -128,22 +134,22 @@ def result(request):
      for row in result:
          if row.question.right_opt  == row.right_answer:
             rightAns +=1
-     percentage= (rightAns*100)/result.count()
+            percentage= (rightAns*100)/result.count()
      context={
-                    'result':result,
-                    'total_skipped': skipped,
-                    'attempted': attempted,
-                    'rightAns': rightAns,
-                    'percentage': percentage
-                    
-                }
+                            'result':result,
+                            'total_skipped': skipped,
+                            'attempted': attempted,
+                            'rightAns': rightAns,
+                            'percentage': percentage
+                            
+                        }
    
      return render(request, 'quizs/result.html', context)
     
 
-@login_required(login_url=('login'))
-def attempt_limit(request):
-        return render(request, 'attempt_limit.html' )
+# # @login_required(login_url=('login'))
+# def attempt_limit(request):
+#         return render(request, 'quizs/attempt-limit.html' )
 
 @login_required(login_url=('login'))
 def final(request):
@@ -156,13 +162,13 @@ def final(request):
     for row in result:
         if row.question.right_opt  == row.right_answer:
             rightAns +=1
-    percentage= (rightAns*100)/result.count() 
-    context={
-                'result':result,
-                'total_skipped':skipped,
-                'attempted':attempted,
-                'rightAns': rightAns,
-                'percentage':percentage
+            percentage= (rightAns*100)/result.count() 
+            context={
+                        'result':result,
+                        'total_skipped':skipped,
+                        'attempted':attempted,
+                        'rightAns': rightAns,
+                        'percentage':percentage
 
-            }
-    return render(request, 'quizs/final.html', context)
+                    }
+            return render(request, 'quizs/final.html', context)

@@ -1,13 +1,13 @@
 
-    $(document).ready(function(){
-        $(".submitBtn").on('click', function(){
-           var _checkedAns= $("input[name='answer']:checked").val();
-           if(_checkedAns==undefined){
-               alert('please select option!!');
-               return false;
-           }
+    // $(document).ready(function(){
+    //     $(".submitBtn").on('click', function(){
+    //        var _checkedAns= $("input[name='answer']:checked").val();
+    //        if(_checkedAns==undefined){
+    //            alert('please select option!!');
+    //            return false;
+    //        }
 
-        });
+    //     });
 
 // timer 
 	// $(".timer").countdowntimer({
@@ -18,7 +18,7 @@
            
     //     }
 	// });
-    });
+    // });
 
 
     // " {{question.time_limit}} "
