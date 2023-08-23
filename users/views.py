@@ -7,8 +7,9 @@ from django.contrib.auth import login,logout,authenticate
 
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-# Create your views here.
 
+from django.contrib.auth.forms import UserCreationForm
+# Create your views here.
 
 
 
@@ -16,15 +17,17 @@ from django.contrib import messages
 def register(request):
     if request.user.is_authenticated:
         return redirect('index')
-    form = CreateProfile()
+    else:
+
+     form = CreateProfile()
 
     if request.method== 'POST':
-        forms = CreateProfile(request.POST, request.FILES)
-        if forms.is_valid():
-            username = forms.cleaned_data.get('username')
-            email = forms.cleaned_data.get('email')
-            password = forms.cleaned_data.get('password1')
-            password2 = forms.cleaned_data.get('password2')
+        form = CreateProfile(request.POST, request.FILES)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            email = form.cleaned_data.get('email')
+            password = form.cleaned_data.get('password1')
+            password2 = form.cleaned_data.get('password2')
             
 
             if User.objects.filter(username=username).exists():
@@ -57,8 +60,17 @@ def register(request):
             #  recipient_list = [email],
             #  fail_silently=False)
  
-            return redirect('login')
- 
+            # return redirect('login')
+
+        # form = CreateUserForm()
+        # if request.method== 'POST':
+        #     form = CreateUserForm(request.POST, request.FILES)
+        #     if form.is_valid():
+        #         form.save()
+        #         user = form.cleaned_data.get('username')
+        #         messages.success(request, "Registration successfull." + user)
+        #         return redirect('login')
+    
     context={
         'form': form
     }
@@ -76,16 +88,16 @@ def loginuser(request):
         username = request.POST.get('uname')
         password = request.POST.get('passwd')
 
-        user = authenticate(username= username, password=password)
+        user = authenticate(request, username= username, password=password)
 
         if user is not None:
             login(request, user)
             messages.success(request, "login successfull.")
             
 
-            if 'next' in request.GET:
-                next_url = request.GET.get('next')
-                return redirect(next_url)
+            # if 'next' in request.GET:
+            #     next_url = request.GET.get('next')
+            #     return redirect(next_url)
             
             return redirect('dashboard')
         else:
@@ -101,7 +113,7 @@ def logoutuser(request):
     messages.success(request, "logout successfull.")
     return redirect('login')
 
-# @login_required(login_url=('login'))
+@login_required(login_url=('login'))
 def dashboard(request):
     user = request.user.profile
 
@@ -118,7 +130,7 @@ def dashboard(request):
 # update page
 
 
-# @login_required(login_url=('login'))
+@login_required(login_url=('login'))
 
 def update_profile(request):
     user = request.user.profile
