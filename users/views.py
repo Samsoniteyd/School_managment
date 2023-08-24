@@ -44,10 +44,10 @@ def register(request):
                 return redirect('register')
 
             user = User.objects.create_user(username,email,password) 
-            forms= forms.save(commit=False)      
-            forms.user = user
-            forms.save()
-            messages.success(request, "Registration successfull.")
+            form= form.save(commit=False)      
+            form.user = user
+            form.save()
+            messages.success(request, "Registration successfull." + user)
 
             if 'next' in request.GET:
                 next_url = request.GET.get('next')
@@ -60,7 +60,7 @@ def register(request):
             #  recipient_list = [email],
             #  fail_silently=False)
  
-            # return redirect('login')
+            return redirect('login')
 
         # form = CreateUserForm()
         # if request.method== 'POST':
@@ -92,12 +92,12 @@ def loginuser(request):
 
         if user is not None:
             login(request, user)
-            messages.success(request, "login successfull.")
+            messages.success(request, "login successfull." + username )
             
 
-            # if 'next' in request.GET:
-            #     next_url = request.GET.get('next')
-            #     return redirect(next_url)
+            if 'next' in request.GET:
+                next_url = request.GET.get('next')
+                return redirect(next_url)
             
             return redirect('dashboard')
         else:

@@ -58,7 +58,7 @@ def category_question(request, cat_id):
     return render(request, 'quizs/category_question.html', context)
 
 
-
+@login_required(login_url=('login'))
 def submit_answer(request, cat_id, quest_id):
     if request.method== 'POST':
         category = models.QuizCategory.objects.get(id=cat_id)
@@ -124,7 +124,7 @@ def attempt_limit(request):
    
     return render(request, 'quizs/attempt-limit.html')
 
-
+@login_required(login_url=('login'))
 def result(request):
      result = models.UserSubmittedAnswer.objects.filter(user=request.user)
      skipped = models.UserSubmittedAnswer.objects.filter(user=request.user,  right_answer= "not submitted" ).count()
